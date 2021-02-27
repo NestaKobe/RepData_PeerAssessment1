@@ -3,8 +3,8 @@ title: 'Reproducible Research: Peer Assessment 1'
 author: "Simon Coburg"
 date: "26/02/2021"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -36,6 +36,7 @@ The following steps were applied to load, import and check the dataset.
 #Libraries
 library(ggplot2)
 library(dplyr)
+
 
 #Load data
 path <- getwd()
@@ -81,7 +82,7 @@ Total number of steps taken are *570,608*.
 #### 2. Create histogram of total number of steps taken each day
 ```{r}
 #Create barplot
-p1 <- ggplot(steps_total, aes(steps_daily)) + 
+ggplot(steps_total, aes(steps_daily)) + 
       geom_histogram(binwidth = 2500, col = "tomato3", fill = "sandybrown") +
       geom_rug(aes(steps_daily)) +
       ggtitle("Total number of steps taken each day") +
@@ -91,11 +92,6 @@ p1 <- ggplot(steps_total, aes(steps_daily)) +
       scale_x_continuous(breaks=seq(0,25000,2500)) +
       theme_bw() +
       theme(plot.title = element_text(hjust = 0.5))
-
-p1
-
-#Safe file in working directory
-ggsave(filename = "Plot1_Total number of steps taken each day.png", p1, dpi = 600, limitsize = TRUE)
 ```
 
 #### 3. Calculate mean and median of total number of steps taken per day
@@ -119,19 +115,13 @@ steps_interval <- activity %>%
   summarise(steps = mean(steps, na.rm =TRUE))
 
 
-p2 <- ggplot(steps_interval, aes(interval, steps)) +
+ggplot(steps_interval, aes(interval, steps)) +
       geom_line(col="blue") +
       ggtitle("Average daily activity pattern") +
       xlab("5-minute intervals") +
       ylab("Average number of steps taken") +
       theme_bw() +
       theme(plot.title = element_text(hjust = 0.5))
-
-p2
-
-#Safe file in working directory
-ggsave(filename = "Plot2_Average daily activity pattern.png", p2, dpi = 600, limitsize = TRUE)
-
 ```
 #### 2. Which 5-minute interval (averaged across all days) contains max. number of steps?
 
@@ -185,7 +175,7 @@ colnames(activity_complete_steps) <- c("Date", "Steps")
 head(activity_complete_steps)
 
 
-p3 <- ggplot(activity_complete_steps, aes(Steps)) +
+ggplot(activity_complete_steps, aes(Steps)) +
       geom_histogram(binwidth = 2500, col = "blue", fill = "skyblue1") +
       geom_rug(aes(Steps)) +
       ggtitle("Adjusted total number of steps taken each day") +
@@ -193,11 +183,6 @@ p3 <- ggplot(activity_complete_steps, aes(Steps)) +
       ylab("Frequency") +
       theme_bw() +
       theme(plot.title = element_text(hjust = 0.5))
-
-p3
-
-#Safe file in working directory
-ggsave(filename = "Plot3_Adjusted total number of steps taken each day.png", p3, dpi = 600, limitsize = TRUE)
 ```
 
 #### 5. Calculate and report sum, mean & median
@@ -239,7 +224,7 @@ steps_week <- activity_complete %>%
   group_by(interval, Type) %>%
   summarise(steps = mean(steps, na.rm =TRUE))
 
-p4 <- ggplot(steps_week, aes(interval, steps)) +
+ggplot(steps_week, aes(interval, steps)) +
       geom_line(col="black") +
       facet_wrap(~Type, nrow=2) +
       ggtitle("Weekday vs weekend activity pattern") +
@@ -247,11 +232,6 @@ p4 <- ggplot(steps_week, aes(interval, steps)) +
       ylab("Average number of steps taken") +
       theme_bw() +
       theme(plot.title = element_text(hjust = 0.5))
-
-p4
-
-#Safe file in working directory
-ggsave(filename = "Plot4_Weekday vs weekend activity pattern.png", p4, dpi = 600, limitsize = TRUE)
 ```
 
 ##### This concludes the assignment.
