@@ -2,8 +2,7 @@
 title: 'Reproducible Research: Peer Assessment 1'
 author: "Simon Coburg"
 date: "26/02/2021"
-output:
-  html_document: default
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
