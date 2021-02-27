@@ -3,7 +3,10 @@ title: 'Reproducible Research: Peer Assessment 1'
 author: "Simon Coburg"
 date: "26/02/2021"
 output: html_document
+<<<<<<< HEAD
 keep_md: true
+=======
+>>>>>>> a80a809813a9447e38f7c0d944622b74829d15d1
 ---
 
 ```{r setup, include=FALSE}

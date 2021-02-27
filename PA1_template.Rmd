@@ -78,7 +78,6 @@ ggplot(steps_total, aes(steps_daily)) +
 summary(steps_total$steps_daily, na.rm = TRUE)
 ```
 
-
 ## What is the average daily activity pattern?
 
 #### 1. Time series of the averaged number of steps taken by 5-minute intervals
